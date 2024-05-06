@@ -13,9 +13,7 @@ def get_movies(movie_title: str):
     params = {
         "apikey": API_KEY,
         "s": movie_title,
-        "plot": "full",
-        
-        
+            
     }
     
     response = requests.get(URL, params=params)
