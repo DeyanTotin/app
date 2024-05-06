@@ -1,0 +1,34 @@
+{% extends "base.html"%}
+
+{%block head%} 
+
+{%endblock%}
+
+{%block body%}
+<div class="content">
+    <h1>Movies</h1>
+
+    <form action="/" method="GET">    
+        <input type="text" name="content" id="content">
+        <input type="submit" value="Search Movie">
+    </form>
+        
+    {% if movies %}
+        <h2>Total Results: {{ total_results }}</h2>
+        {% for movie in movies %}
+            <img src="{{movie['Poster']}}" alt="Movie Poster" style="width:100px; height:150px;">
+
+            <h2>{{ movie["Title"] }}</h2>
+            <ul>
+                <li>Year: {{ movie["Year"] }}</li>
+                <li>Type: {{ movie["Type"] }}</li>
+                <li>IMDB ID: {{ movie["imdbID"] }}</li>
+            </ul>
+
+        {% endfor %}
+    {% else %}
+    <p>No movies found</p>
+    {% endif %}
+</div>
+
+{%endblock%}
