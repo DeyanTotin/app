@@ -1,34 +1,28 @@
 
-from flask import Flask, request
-from app.movies_services import get_movie_by_title
+from flask import Flask, request, render_template
+from app.movies_services import get_movies
 
 app = Flask(__name__)
 
 
 
-@app.route("/")
-def home_page():
-    return "<p>This is the home page<p/>"
-
-
-@app.route("/search/<string:movie_title>", methods = ["GET"])
-def search_movie(movie_title: str):
+@app.route("/", methods = ["GET"])
+def search_movie():
     if request.method == "GET":
-        data = get_movie_by_title(movie_title)
         
-        return f"<p>{data}</p>"
-    
-    
-    
-    
-    
-    
-    
+        movie_title = request.args.get("content", "").strip()
+        total_movies = 0
+        if movie_title:
+            
+            movies = get_movies(movie_title)
+            total_movies = len(movies) | 0
+            
+        
+        else:
+            movies = []
 
+        return render_template("index.html", movies=movies, total_results=total_movies)
 
-
-
-
-
+    
 if __name__ == "__main__":
     app.run(debug=True)
