@@ -1,29 +1,30 @@
 
 from flask import Flask, request, render_template
-from app.movies_services import get_movies
+from app.collections_services import get_collections
 
 app = Flask(__name__)
 
 
 
-@app.route("/", methods = ["GET"])
-def search_movie():
+@app.route("/collections", methods = ["GET"])
+def search_collections():
     if request.method == "GET":
         
-        movie_title = request.args.get("content", "").strip()
-        total_movies = 0
-        if movie_title:
-            
-            movies = get_movies(movie_title)
-            total_movies = len(movies)
+        collection_title = request.args.get("content", "").strip()
+        
+        
+
+        if collection_title:
+   
+            collections = get_collections(collection_title)
+            total_results = len(collection_title)
+             
             
         else:
-            movies = []
+            collections = []
+            total_results = 0
+        return render_template("index.html", collections=collections, total_results=total_results)
 
-        return render_template("index.html", movies=movies, total_movies=total_movies)
-
-    
-    
     
     
     

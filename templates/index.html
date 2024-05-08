@@ -6,30 +6,32 @@
 
 {%block body%}
 <div class="content">
-    <h1>Movies</h1>
+    <h1>Collections</h1>
 
-    <form action="/" method="GET">    
+    <form action="/collections" method="GET">    
         <input type="text" name="content" id="content">
         <input type="submit" value="Search Movie">
     </form>
         
-    {% if movies %}
-        <h2>Total Results: {{ total_movies }}</h2>
+    {% if collections %}
+        <h2>Total: {{ total_results }}</h2>
+        {% for collection in collections %}
+    
+                <div class="box-1">  
+                    <img src="https://image.tmdb.org/t/p/w200{{ collection['poster_path'] }}" alt="Movie Poster">
 
-        {% for movie in movies %}
-            <div class="box-1">  
-                <img src="https://image.tmdb.org/t/p/w200{{ movie['poster_path'] }}" alt="Movie Poster">
-
-                <h2>{{ movie["name"] }}</h2>
-                <ul>
-                    <li>Overview: {{ movie["overview"] }}</li>
-                    <li>ID: {{ movie["id"] }}</li>
-                </ul>
-            </div>
-
+                    <h2>{{ collection.get("name", "title") }}</h2>
+                    <ul>
+                        <li>Overview: {{ collection["overview"] }}</li>
+                        <li>ID: {{ collection["id"] }}</li>
+                    </ul>
+                </div>
+            
         {% endfor %}
+
+
     {% else %}
-    <p>No movies found</p>
+    <p>No collections found</p>
     {% endif %}
 </div>
 

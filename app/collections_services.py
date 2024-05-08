@@ -1,14 +1,16 @@
 
 
 import requests
-from passwords import API_TOKEN
+# from passwords import API_TOKEN
+
+API_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmN2M4MGFmMmY4NDI3ZmU4OTAwMWIyNzE5ZGVhNTU4YSIsInN1YiI6IjY2Mzc1ZTY1MzU4ZGE3MDEyYTU2NjA2MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.kGdh3QivdUl2CUNBIRjTYExwhjz1MNlW5gFeMPN2gyA"
 
 BASE_URL = "https://api.themoviedb.org/3/"
 
 
 
 
-def get_movies(movie_title: str):
+def get_collections(collection_title: str):
     
     
     headers = {
@@ -18,10 +20,9 @@ def get_movies(movie_title: str):
     
     params = {
         
-        "query": movie_title,
+        "query": collection_title,
         "include_adult": True,
         "language": "en-US",
-        "page": 1,
         "region": None
             
     }
@@ -33,17 +34,11 @@ def get_movies(movie_title: str):
     json_response = response.json() 
     
   
-    movies = []
     
-    
-    if "Error" in json_response:
-        return []
     if "results" in json_response:    
-        movies = json_response["results"]
-
-        return movies
+        collections = json_response["results"]
+     
+        return collections
         
         
   
-        
-   
