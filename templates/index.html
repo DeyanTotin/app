@@ -14,16 +14,18 @@
     </form>
         
     {% if movies %}
-        <h2>Total Results: {{ total_results }}</h2>
-        {% for movie in movies %}
-            <img src="{{movie['Poster']}}" alt="Movie Poster" style="width:100px; height:150px;">
+        <h2>Total Results: {{ total_movies }}</h2>
 
-            <h2>{{ movie["Title"] }}</h2>
-            <ul>
-                <li>Year: {{ movie["Year"] }}</li>
-                <li>Type: {{ movie["Type"] }}</li>
-                <li>IMDB ID: {{ movie["imdbID"] }}</li>
-            </ul>
+        {% for movie in movies %}
+            <div class="box-1">  
+                <img src="https://image.tmdb.org/t/p/w200{{ movie['poster_path'] }}" alt="Movie Poster">
+
+                <h2>{{ movie["name"] }}</h2>
+                <ul>
+                    <li>Overview: {{ movie["overview"] }}</li>
+                    <li>ID: {{ movie["id"] }}</li>
+                </ul>
+            </div>
 
         {% endfor %}
     {% else %}

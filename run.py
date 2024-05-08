@@ -15,14 +15,18 @@ def search_movie():
         if movie_title:
             
             movies = get_movies(movie_title)
-            total_movies = len(movies) | 0
+            total_movies = len(movies)
             
-        
         else:
             movies = []
 
-        return render_template("index.html", movies=movies, total_results=total_movies)
+        return render_template("index.html", movies=movies, total_movies=total_movies)
 
+    
+    
+    
+    
+    
     
 if __name__ == "__main__":
     app.run(debug=True)

@@ -3,5 +3,22 @@
 body {
     margin: 0;
     font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    height: 100vh;
+    
+}
+
+
+.box-1 {
+    width: 200px;
+    height: fit-content;
+    min-height: 300px;
+    padding: 10px;
+    border: 5px solid rgb(41, 39, 39);
+    border-radius: 10px;
+    margin: 10px;
+    
     
 }

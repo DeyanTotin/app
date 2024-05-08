@@ -1,32 +1,45 @@
 
 
 import requests
-from passwords import API_KEY
+from passwords import API_TOKEN
 
-URL = "http://www.omdbapi.com/"
+BASE_URL = "https://api.themoviedb.org/3/"
 
 
 
 
 def get_movies(movie_title: str):
     
+    
+    headers = {
+        "accept": "application/json",
+        "Authorization": f"Bearer {API_TOKEN}"
+    }
+    
     params = {
-        "apikey": API_KEY,
-        "s": movie_title,
+        
+        "query": movie_title,
+        "include_adult": True,
+        "language": "en-US",
+        "page": 1,
+        "region": None
             
     }
     
-    response = requests.get(URL, params=params)
+    url = BASE_URL + "search/collection"
+    
+    response = requests.get(url, headers=headers, params=params)
    
     json_response = response.json() 
     
   
     movies = []
     
+    
     if "Error" in json_response:
         return []
-    if "Search" in json_response:    
-        movies = json_response["Search"]
+    if "results" in json_response:    
+        movies = json_response["results"]
 
         return movies
         
