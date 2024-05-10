@@ -161,3 +161,4 @@ cython_debug/
 passwords.py
 database.db-journal
 database.db
+.vscode/settings.json
