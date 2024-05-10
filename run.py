@@ -5,9 +5,11 @@ from app.collections_services import get_collections
 app = Flask(__name__)
 
 
+
 @app.route("/", methods=["GET", "POST"])
 def home_page():
-    ...
+    
+    return render_template("index.html")
 
 
 @app.route("/collections", methods = ["GET"])
@@ -31,7 +33,7 @@ def search_collections():
             
         chunks = [collections[i:i + 4] for i in range(0, len(collections), 4)]
         
-        return render_template("index.html", chunks=chunks)
+        return render_template("collections.html", chunks=chunks)
 
     
     
