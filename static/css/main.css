@@ -11,18 +11,22 @@ body {
 }
 
 .content {
-    max-width: 1200px;
+    display: flex;
+    flex-direction: column;  
+    justify-content: center;
+    align-items: center;
     margin: auto;
-    padding: 10px;
+    padding: 8px;
 }
+
 
 .box-1 {
     width: 200px; 
     height: 300px; 
-    padding: 10px;
+    padding: 8px;
     border: 5px solid rgb(41, 39, 39);
     border-radius: 30px;
-    margin: 10px;
+    margin: 8px;
     position: relative;
     overflow: hidden; 
     display: flex;
@@ -75,7 +79,30 @@ body {
 
 .search-bar{
     display: flex;
-    justify-content: center;
-    flex-direction: row;
+    justify-content: center;  
     
+}
+
+
+.nav-bar {
+    width: 100%;
+    max-width: 256px;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid;
+    border-color: black;
+    border-radius: 16px;
+    margin: 16px;
+    padding: 2px;
+
+}
+
+
+.items-nav-bar {
+    border: 2px solid;
+    border-color: black;
+    padding: 4px;
+    margin: 2px;
 }
