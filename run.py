@@ -29,15 +29,11 @@ def search_collections():
         if collection_title:
    
             collections = get_collections(collection_title)
-
-            
-             
-            
+ 
         else:
             collections = []
             
         
-            
         chunks = [collections[i:i + 4] for i in range(0, len(collections), 4)]
         
         return render_template("collections.html", chunks=chunks)
@@ -46,13 +42,13 @@ def search_collections():
 @app.route("/collection/<id>", methods=["GET"])
 def get_collection(id):
     
-    
-    collection = get_collection_by_id(id)
-    
-    print(collection)
-    return render_template("collection.html", collection=collection)
-    
-    
+    if request.method == "GET":
+        collection = get_collection_by_id(id)
+        
+        print(collection)
+        return render_template("collection.html", collection=collection)
+        
+        
     
     
 if __name__ == "__main__":
