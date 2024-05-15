@@ -1,9 +1,40 @@
 {% extends "base.html"%}
-
+                
 {%block head%}
+<title>{{collection["name"]}}</title>
 {%endblock%}
 
 
+
 {%block body%}
+<div class="content">
     {{collection}}
+
+        <div class="collection">
+            
+            
+            <img src="https://image.tmdb.org/t/p/w200{{ collection['poster_path'] }}">
+
+            <h3>{{ collection["name"]}}</h3>
+            <h4>Overview: {{ collection["overview"]}}</h4>
+
+
+            
+            <div class="collection">
+                <h1>PARTS</h1>
+                {% for part in collection["parts"]%}
+                    <img src="https://image.tmdb.org/t/p/w200{{ part['poster_path'] }}">
+                    <h3>{{part["original_title"]}}</h3>
+                
+                    <h3>Overview: {{part["overview"]}}</h3>
+                    <h3>Type: {{part["media_type"]}}</h3>
+                    <h3>Release Date: {{part["release_date"]}}</h3>
+                    <h3>Votes: {{part["vote_count"]}}</h3>
+                    <h3>Rating: {{part["vote_average"]}}</h3>
+                    
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
 {%endblock%}

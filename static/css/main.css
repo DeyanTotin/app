@@ -127,3 +127,17 @@ body {
     margin: 2px;
 }
 
+
+
+.collection{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+
+}
+
+.collection img{
+    width: 200px;
+}
+
