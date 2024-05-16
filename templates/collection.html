@@ -8,7 +8,10 @@
 
 {%block body%}
 <div class="content">
-    {{collection}}
+
+        <form>
+            <input type="button" value="back" onclick="history.back()">
+        </form>
 
         <div class="collection">
             
@@ -25,7 +28,6 @@
                 {% for part in collection["parts"]%}
                     <img src="https://image.tmdb.org/t/p/w200{{ part['poster_path'] }}">
                     <h3>{{part["original_title"]}}</h3>
-                
                     <h3>Overview: {{part["overview"]}}</h3>
                     <h3>Type: {{part["media_type"]}}</h3>
                     <h3>Release Date: {{part["release_date"]}}</h3>
