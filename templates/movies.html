@@ -19,6 +19,23 @@
                
      </div>
 
+     <div class="search-bar">
+
+        <form action="/movies" method="GET">
+            <input type="text" name="content" id="content">
+            <input type="submit" value="Search">
+        </form>
+    </div>
+     <div>
+
+
+        {% for movie in now_playing %}
+
+            <h2>{{movie}}</h2>
+        
+            {%endfor%}
+     </div>
+
 </div>
 
 
