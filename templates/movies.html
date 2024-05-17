@@ -26,14 +26,33 @@
             <input type="submit" value="Search">
         </form>
     </div>
+
+
+    <h1>Now Playing</h1>
      <div>
 
+        <div class="items-row">
 
-        {% for movie in now_playing %}
+            {% for movie in now_playing %}
+            <div class="box-1">
+                <div class="flip">
+                        <div class="frontside">
 
-            <h2>{{movie}}</h2>
-        
+                            <img src="https://image.tmdb.org/t/p/w200{{ movie['poster_path'] }}" alt="{{movie['original_title']}} poster">
+                        </div>
+                        <div class="backside">
+
+                            <h3 class="hidden-text">Overview: {{movie["overview"]}}</h2>
+                            <h3 class="hidden-text">Rating: {{movie["vote_average"]}}</h2>
+                            <h3 class="hidden-text">Votes: {{movie["vote_count"]}}</h2>
+                            <h3 class="hidden-text">Released: {{movie["release_date"]}}</h2>
+                            <a href="{{ url_for('get_movie', id=movie['id'])}}" class="hidden-text">view</a>                
+                        </div>
+                </div>
+                            
+            </div>
             {%endfor%}
+        </div>
      </div>
 
 </div>
