@@ -34,3 +34,16 @@ def get_now_playing(region="BG"):
     now_playing_movies = json_data["results"]
     
     return now_playing_movies
+
+
+
+def get_movie_by_id(id):
+    id = int(id)
+    
+    url = BASE_URL + f"movie/{id}"
+    
+    
+    response = requests.get(url, headers=HEADERS)
+    json_repsonse = response.json()
+    return json_repsonse
+    
