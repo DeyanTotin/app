@@ -1,7 +1,7 @@
 
 from flask import Flask, request, render_template
 from app.collections_services import get_collections, get_collection_by_id
-from app.movies_services import get_now_playing
+from app.movies_services import get_now_playing, get_movie_by_id
 app = Flask(__name__)
 
 
@@ -21,6 +21,14 @@ def search_movies():
             now_playing = get_now_playing()
             
             return render_template("movies.html", now_playing=now_playing)
+
+
+@app.route("/movie/<id>", methods=["GET"])
+def get_movie(id):
+    if request.method == "GET":
+        movie = get_movie_by_id(id)
+        
+        return render_template("movie.html", movie=movie)
 
 
 @app.route("/tvs", methods = ["GET", "POST"])
