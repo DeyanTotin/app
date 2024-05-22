@@ -14,12 +14,13 @@ HEADERS = {
 }
 
 
-def get_now_playing(region="BG"):
+def get_now_playing(region="US", page=1):
     
     
     
     params = {
-        "region": region
+        "region": region,
+        "page": page
     }
     
     
@@ -33,7 +34,7 @@ def get_now_playing(region="BG"):
     
     now_playing_movies = json_data["results"]
     
-    return now_playing_movies
+    return remove_empty_item(now_playing_movies)
 
 
 

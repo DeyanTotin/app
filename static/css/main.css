@@ -141,3 +141,14 @@ body {
     width: 200px;
 }
 
+
+
+.pagination{
+    display: flex;
+    flex-direction: row;
+}
+
+#page-number{
+    border: 1px solid;
+    padding: 4px;
+}

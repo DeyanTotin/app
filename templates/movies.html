@@ -2,63 +2,61 @@
 
 {% block head %}
 
-
 {% endblock %}
-
 
 {%block body%}
 
 <div class="content">
 
     <div class="nav-bar">
-        
+
         <a href="{{ url_for('home_page') }}" class="items-nav-bar"> Home </a>
         <a href="{{ url_for('search_tvs') }}" class="items-nav-bar"> TVs </a>
-        <a href="{{ url_for('search_collections')}}" class="items-nav-bar"> Collections </a>
-           
-               
-     </div>
+        <a href="{{ url_for('search_collections')}}" class="items-nav-bar">Collections </a>
 
+    </div>
 
     <h1>Now Playing </h1>
     <div>
-        
 
-            {% for chunk in chunks%}
-                <div class="items-row">
-                    {% for movie in chunk%}
-                    <div class="box-1">
-                        <div class="flip">
-                                <div class="frontside">
+        {% for chunk in chunks%}
+        <div class="items-row">
+            {% for movie in chunk%}
+            <div class="box-1">
+                <div class="flip">
+                    <div class="frontside">
 
-                                    <img src="https://image.tmdb.org/t/p/w200{{ movie['poster_path'] }}" alt="{{movie['original_title']}} poster">
-                                </div>
-                                <div class="backside">
-
-                                    <h3 class="hidden-text">Overview: {{movie["overview"]}}</h2>
-                                    <h3 class="hidden-text">Rating: {{movie["vote_average"]}}</h2>
-                                    <h3 class="hidden-text">Votes: {{movie["vote_count"]}}</h2>
-                                    <h3 class="hidden-text">Released: {{movie["release_date"]}}</h2>
-                                    <a href="{{ url_for('get_movie', id=movie['id'])}}" class="hidden-text">view</a>                
-                            </div>
-                        </div>                 
+                        <img
+                            src="https://image.tmdb.org/t/p/w200{{ movie['poster_path'] }}"
+                            alt="{{movie['original_title']}} poster">
                     </div>
-                {%endfor%}
+                    <div class="backside">
+
+                        <h3 class="hidden-text">Overview:
+                            {{movie["overview"]}}</h2>
+                        <h3 class="hidden-text">Rating:
+                            {{movie["vote_average"]}}</h2>
+                        <h3 class="hidden-text">Votes:
+                            {{movie["vote_count"]}}</h2>
+                        <h3 class="hidden-text">Released:
+                            {{movie["release_date"]}}</h2>
+                        <a href="{{ url_for('get_movie', id=movie['id'])}}"
+                            class="hidden-text">view</a>
+                    </div>
                 </div>
+            </div>
             {%endfor%}
-        
-    </div>
-    <div>
-        <div>
-            
         </div>
-        <div>
+        {%endfor%}
 
-        </div>
     </div>
+
+        <div class="pagination">
+
+            <button onclick="changePage(-1)"><</button>
+            <div id="page-number">{{ page }}</div>
+            <button onclick="changePage(1)">></button>
+        </div>
 </div>
-
-
-
 
 {%endblock%}
