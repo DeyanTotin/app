@@ -17,10 +17,13 @@ def home_page():
 @app.route("/movies", methods = ["GET", "POST"])
 def search_movies():
         if request.method == "GET":
+            
+        
         
             now_playing = get_now_playing()
+            chunks = [now_playing[i:i + 4] for i in range(0, len(now_playing), 4)]
             
-            return render_template("movies.html", now_playing=now_playing)
+            return render_template("movies.html", chunks=chunks)
 
 
 @app.route("/movie/<id>", methods=["GET"])
