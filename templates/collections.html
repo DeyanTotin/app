@@ -9,12 +9,12 @@
 
     <div class="nav-bar">
         
-        <a href="{{ url_for('home_page') }}" class="items-nav-bar"> Home </a> 
+        <a href="{{ url_for('home_page', movie_list='now_playing') }}" class="items-nav-bar"> Home </a> 
         <a href="{{ url_for('search_movies') }}" class="items-nav-bar"> Movies </a>
         <a href="{{ url_for('search_tvs') }}" class="items-nav-bar"> TVs </a>
            
                
-     </div>
+    </div>
 
     <div class="search-bar">
 

@@ -1,7 +1,7 @@
 
 from flask import Flask, request, render_template
 from app.collections_services import get_collections, get_collection_by_id
-from app.movies_services import get_now_playing, get_movie_by_id
+from app.movies_services import get_movie_list, get_movie_by_id
 app = Flask(__name__)
 
 
@@ -14,21 +14,20 @@ def home_page():
         
         return render_template("index.html")
 
-@app.route("/movies", methods = ["GET", "POST"])
-def search_movies():
-        if request.method == "GET":
-            
-            
-            page = int(request.args.get("page",1))
-            if page < 1:
-                page =1
-            
-            print(page)
+@app.route("/movies/<movie_list>", methods = ["GET", "POST"])
+def search_movies(movie_list):
+    if request.method == "GET":
+
+        region = "US"
+        page = int(request.args.get("page",1))
+        if page < 1:
+            page = 1
         
-            now_playing = get_now_playing(page=page)
-            chunks = [now_playing[i:i + 4] for i in range(0, len(now_playing), 4)]
-            
-            return render_template("movies.html", chunks=chunks, page=page)
+    
+        now_playing = get_movie_list(movie_list=movie_list, region=region, page=page)
+        chunks = [now_playing[i:i + 4] for i in range(0, len(now_playing), 4)]
+        
+        return render_template("movies.html", chunks=chunks, page=page)
 
 
 @app.route("/movie/<id>", methods=["GET"])

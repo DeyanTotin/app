@@ -14,7 +14,7 @@ HEADERS = {
 }
 
 
-def get_now_playing(region="US", page=1):
+def get_movie_list(movie_list="now_playing",region="US", page=1):
     
     
     
@@ -24,7 +24,7 @@ def get_now_playing(region="US", page=1):
     }
     
     
-    url = BASE_URL + "movie/now_playing"
+    url = BASE_URL + f"movie/{movie_list}"
     
     
     response =  requests.get(url,headers=HEADERS, params=params)
@@ -32,9 +32,9 @@ def get_now_playing(region="US", page=1):
     
     json_data = response.json()
     
-    now_playing_movies = json_data["results"]
     
-    return remove_empty_item(now_playing_movies)
+    movie_data = json_data["results"]
+    return remove_empty_item(movie_data)
 
 
 

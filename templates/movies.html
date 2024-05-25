@@ -16,6 +16,13 @@
 
     </div>
 
+    <div class="nav-bar-movies">
+        <a href="{{url_for('search_movies', movie_list='now_playing')}}" class="items-nav-bar-movies">Now playing</a>
+        <a href="{{url_for('search_movies', movie_list='popular')}}"class="items-nav-bar-movies">Popular</a>
+        <a href="{{url_for('search_movies', movie_list='top_rated')}}" class="items-nav-bar-movies">Top Rated</a>
+        <a href="{{url_for('search_movies', movie_list='upcoming')}}"class="items-nav-bar-movies">Upcoming</a>
+    </div>
+
     <h1>Now Playing </h1>
     <div>
 

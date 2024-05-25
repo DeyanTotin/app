@@ -12,7 +12,7 @@
 
     <div class="nav-bar">
         
-        <a href="{{ url_for('search_movies') }}" class="items-nav-bar"> Movies </a>
+        <a href="{{ url_for('search_movies', movie_list='now_playing') }}" class="items-nav-bar"> Movies </a>
         <a href="{{ url_for('search_tvs') }}" class="items-nav-bar"> TVs </a>
         <a href="{{ url_for('search_collections')}}" class="items-nav-bar"> Collections </a>
            
