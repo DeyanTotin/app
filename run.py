@@ -27,7 +27,7 @@ def search_movies(movie_list):
         now_playing = get_movie_list(movie_list=movie_list, region=region, page=page)
         chunks = [now_playing[i:i + 4] for i in range(0, len(now_playing), 4)]
         
-        return render_template("movies.html", chunks=chunks, page=page)
+        return render_template("movies.html", chunks=chunks, page=page, movie_list=movie_list)
 
 
 @app.route("/movie/<id>", methods=["GET"])

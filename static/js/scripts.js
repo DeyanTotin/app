@@ -3,7 +3,7 @@ function changePage(increment) {
     let currentPage = parseInt(pageNumberElement.innerHTML, 10);
 
     if (isNaN(currentPage)) {
-        currentPage = 1
+        currentPage = 1;
     }
 
     let newPage = currentPage + increment;
@@ -12,10 +12,13 @@ function changePage(increment) {
         newPage = 1;
     }
 
+    let activeLink = document.querySelector('.nav-bar-movies .active');
+    let movieList = activeLink ? activeLink.getAttribute('data-movie-list') : 'now_playing';
+
     $.ajax({
-        url: '/movies',
+        url: '/movies/' + movieList,
         type: 'GET',
-        data: {'page': newPage},
+        data: { 'page': newPage },
         success: function(response) {
             document.querySelector('.content').innerHTML = response;
             pageNumberElement.innerHTML = newPage;
@@ -25,3 +28,14 @@ function changePage(increment) {
         }
     });
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    var currentUrl = window.location.pathname;
+    var navLinks = document.querySelectorAll('.nav-bar-movies a');
+    
+    navLinks.forEach(function(link) {
+        if (link.href.includes(currentUrl)) {
+            link.classList.add('active');
+        }
+    });
+});
