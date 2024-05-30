@@ -11,8 +11,17 @@
     <form>
         <input type="button" value="back" onclick="history.back()">
     </form>
-
     {{movie}}
-</div>
+    <h1>{{movie["original_title"]}}</h1>
+    <img src="https://image.tmdb.org/t/p/w200{{movie['poster_path']}}" alt="">
+    <p>{{movie["overview"]}}</p>
+    <h2>{{movie["runtime"]}} minutes</h2>
+    <h2>{{movie["release_date"]}}</h2>
+    <h2>Rating: {{movie["vote_average"]}}</h2>
+    <h2></h2>
+    <h3>{{movie["genres"]}}</h3>
+    <a href="{{movie['homepage']}}">homepage</a>
+    <h2>{{movie["production_companies"]}}</h2>
+    </div>
 
 {%endblock%}
