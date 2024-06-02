@@ -30,8 +30,8 @@ function changePage(increment) {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-    var currentUrl = window.location.pathname;
-    var navLinks = document.querySelectorAll('.nav-bar-movies a');
+    let currentUrl = window.location.pathname;
+    let navLinks = document.querySelectorAll('.nav-bar-movies a');
     
     navLinks.forEach(function(link) {
         if (link.href.includes(currentUrl)) {
